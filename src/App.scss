@@ -1,0 +1,83 @@
+// .App {
+//   display: flex;
+//   flex-direction: column;
+//   min-height: 100vh;
+// }
+
+
+
+// // @media (prefers-reduced-motion: no-preference) {
+// //   .App-logo {
+// //     animation: App-logo-spin infinite 20s linear;
+// //   }
+// // }
+
+
+// // @keyframes App-logo-spin {
+// //   from {
+// //     transform: rotate(0deg);
+// //   }
+// //   to {
+// //     transform: rotate(360deg);
+// //   }
+// // }
+
+// main{
+//   display: flex; 
+//   flex: 1;
+//   margin-top: 80px;
+// }
+
+// section {
+//   flex: 1;
+//   padding: 10px;
+//   margin-right: 700px;
+// }
+
+// .scrolling {
+//   margin-top: 80px;
+//   // width: 98%;
+//   // max-width: 600px; 
+//   padding: 10px;
+//   // position: fixed;
+//   // top: 0;
+//   // bottom: 0;
+//   right: 0;
+//   overflow-y: auto;
+// }
+
+// header {
+//   position: fixed;
+//   top: 0;
+//   // left: 0;
+//   width: 100%;
+//   // z-index: 100; 
+// }
+
+// .Container{
+//   padding-top: 10px;
+// }
+
+.overlapping-div { 
+  position: absolute; 
+  z-index: 100; /* Adjust the z-index value as needed */ 
+  text-align: left;
+}
+
+.containerMain{
+  margin-top: 80px;
+}
+
+
+.itemScroll{
+  // margin-top: 20px;
+  padding: 30px;
+  max-height: calc(100vh - 50px); 
+  overflow-y: auto;
+}
+
+
+// .col-Form{
+//   position: absolute;
+//   // z-index: 100;
+// }
