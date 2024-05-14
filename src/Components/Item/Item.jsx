@@ -11,15 +11,17 @@ function Item(props) {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.option.value);
 
-  const itemCompletado = (e, itemName) => {
+
+  const itemCompletado = (e) => {
     e.preventDefault();
 
     if (state === 'Meta') {
-      dispatch(deleteGoal());
+      dispatch(deleteGoal(props.id));
     } else {
-      dispatch(deleteTask());
+      dispatch(deleteTask(props.id));
     }
   }
+
 
 
 
