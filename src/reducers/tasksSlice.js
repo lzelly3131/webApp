@@ -17,7 +17,7 @@ export const createTask = createSlice({
                 },
                 body: JSON.stringify(action.payload)
             }).catch(err => {
-                console.log(err);
+                console.err(err);
             })
         },
         initAddTask: (state, action) => {
@@ -25,6 +25,7 @@ export const createTask = createSlice({
         },
         deleteTask: (state, action) => {
 
+            state.value = state.value.filter((task) => task._id !== action.payload);
 
             fetch("http://localhost:3001/removeTask/" + action.payload, {
                 method: "DELETE",
@@ -35,7 +36,6 @@ export const createTask = createSlice({
             }).catch(err => {
                 console.log(err);
             })
-            state.value = state.value.filter((task) => task.id !== action.payload);
         }, clearTasks: (state) => {
             state.value = [];
         }

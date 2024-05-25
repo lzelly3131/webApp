@@ -15,24 +15,27 @@ function FormMain(props) {
 
 
   const selectOption = useSelector((state) => state.option.value)
-
   const dispatch = useDispatch();
 
   const addItem = (e) => {
     e.preventDefault();
 
     if (selectOption === 'Meta') {
-      dispatch(addGoal({
-        'name': inputRefName.current.value,
-        'description': inputRefDescription.current.value,
-        'dueDate': inputRefDueDate.current.value
-      }))
+      dispatch(addGoal(
+        {
+          'name': inputRefName.current.value,
+          'description': inputRefDescription.current.value,
+          'dueDate': inputRefDueDate.current.value
+        }
+      ))
     } else {
-      dispatch(addTask({
-        'name': inputRefName.current.value,
-        'description': inputRefDescription.current.value,
-        'dueDate': inputRefDueDate.current.value
-      }))
+      dispatch(addTask(
+        {
+          'name': inputRefName.current.value,
+          'description': inputRefDescription.current.value,
+          'dueDate': inputRefDueDate.current.value
+        }
+      ))
     }
   }
 

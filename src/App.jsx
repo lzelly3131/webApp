@@ -22,15 +22,18 @@ function App() {
   // CONSULTAR LAS TAREAS Y METAS POR DEFAULT 
   function initFetch(typeRequest) {
 
+    // VARIABLE QUE ADMINISTRARA EL TIPO (TAREA, META)
     let type;
+    
     if (typeRequest === 'Tarea') {
+      dispatch(clearTasks());
       type = 'Tasks';
-      dispatch(clearTasks()); 
     } else {
       type = 'Goals'
-      dispatch(clearGoals()); 
+      dispatch(clearGoals());
     }
 
+    // OBTENER LAS TAREAS Y METAS DE LA BD
     fetch('http://localhost:3001/get' + type, {
       method: 'GET',
       headers: {
@@ -41,23 +44,21 @@ function App() {
       return res.json();
     }).then((response) => {
       response.map((item) => {
-        if(type == 'Tasks'){
+        if (type == 'Tasks') {
           dispatch(initAddTask(item));
-        }else{
+        } else {
           dispatch(initAddGoal(item));
         }
       })
     }).catch(err => {
-      console.log(err);
+      console.err(err);
     })
   }
 
   // OBTENER EL ESTADO INICIAL
   useEffect(() => {
-    console.log(option);
     initFetch(option);
-
-  },[option])
+  }, [option])
 
   return (
     <div className="App">
@@ -82,11 +83,11 @@ function App() {
               <div className='itemScroll'>
                 {
                   option == 'Meta' ? (
-                    goals.map((tarea, index) => {
-                      return <Item key={index} id={tarea.id} name={tarea.name} description={tarea.description} dueDate={tarea.dueDate} option={'Meta'} />
+                    goals.map((item, index) => {
+                      return <Item key={index} id={item._id} name={item.name} description={item.description} dueDate={item.dueDate} option={'Meta'} />
                     })) : (
                     tasks.map((item, index) => {
-                      return <Item key={index} id={item.id} name={item.name} description={item.description} dueDate={item.dueDate} option={'Tarea'} />
+                      return <Item key={index} id={item._id} name={item.name} description={item.description} dueDate={item.dueDate} option={'Tarea'} />
                     })
                   )
                 }

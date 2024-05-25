@@ -1,5 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import React from 'react';
 import './Item.scss';
 import { useDispatch } from 'react-redux';
 import { deleteGoal } from '../../reducers/goalsSlice';
@@ -18,12 +19,10 @@ function Item(props) {
     if (state === 'Meta') {
       dispatch(deleteGoal(props.id));
     } else {
+      console.log('Props:_id' + props.id);
       dispatch(deleteTask(props.id));
     }
   }
-
-
-
 
 
   return (
@@ -41,4 +40,4 @@ function Item(props) {
   );
 }
 
-export default Item;
+export default React.memo(Item);
