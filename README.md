@@ -1,15 +1,15 @@
 # Proyecto To-Do List
 
-El proyecto está basado para llevar el control de las tareas y metas que se tienen planeadas para una fecha límite.
+El proyecto está basado para llevar el control de las tareas que se tienen planeadas para una fecha límite.
 
-Con el programa se podrá crear y eliminar las tareas que ya hayan sido completadas.
+Con el programa se podrá crear, editar, visualizar y eliminar las tareas que ya hayan sido completadas.
 
 ## Información
 
 El proyecto utiliza las siguientes tecnologías.
-- Node JS (Motor)
+- Node JS
 - React
-- Bootstrap
+- React-Bootstrap
 - JavaScript
 - Docker
 
@@ -22,11 +22,6 @@ El proyecto utiliza las siguientes tecnologías.
 
 >El proyecto ya cuenta con la creación de un contenedor, por lo que se agrega el archivo Dockerfile para las instrucciones necesarias en la imagen a crear.
 >
->Para crear la imagen ejecutar el siguiente comando:
-> - __docker build -t docker-react-image:1.0 .__        
->
->Para crear una instancia o contenedor ejecutar el siguiente comando:
-> - __docker run -p 4000:80 --name docker-react-container docker-react-image:1.0__
 
-
-El proyecto cuando solo con una ventana en la cual puede visualizar las tareas en cola y también podrá crear una nueva tarea.
+El backend del proyecto está realizado en Express JS con MongoDB en la Base de Datos.
+Cuenta con un middleware para la autorización.

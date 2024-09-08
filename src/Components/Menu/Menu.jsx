@@ -3,16 +3,10 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from '../../logo.svg'
 import './Menu.scss';
-import { changeOption } from '../../reducers/optionSlice';
-import { useDispatch } from 'react-redux';
 
 function Menu() {
 
-  const dispatch = useDispatch();
 
-  const changeOptionFunc = (option) =>{
-    dispatch(changeOption(option))
-  }
 
   return (
     <Navbar bg="dark" data-bs-theme="dark" expand="lg" className="Navbar">
@@ -28,8 +22,7 @@ function Menu() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home" onClick={() => changeOptionFunc('Tarea')}>Tareas</Nav.Link>
-            <Nav.Link href="#link" onClick={() => changeOptionFunc('Meta')}>Metas</Nav.Link>
+            <Nav.Link href="#home">Tareas</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

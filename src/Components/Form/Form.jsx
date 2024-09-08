@@ -2,9 +2,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './Form.scss';
 import { useDispatch } from 'react-redux';
-import { addGoal } from '../../reducers/goalsSlice.js';
 import { useRef } from 'react';
-import { useSelector } from 'react-redux';
 import { addTask } from '../../reducers/tasksSlice.js';
 
 function FormMain(props) {
@@ -13,30 +11,18 @@ function FormMain(props) {
   const inputRefDescription = useRef();
   const inputRefDueDate = useRef();
 
-
-  const selectOption = useSelector((state) => state.option.value)
   const dispatch = useDispatch();
 
   const addItem = (e) => {
     e.preventDefault();
 
-    if (selectOption === 'Meta') {
-      dispatch(addGoal(
-        {
-          'name': inputRefName.current.value,
-          'description': inputRefDescription.current.value,
-          'dueDate': inputRefDueDate.current.value
-        }
-      ))
-    } else {
-      dispatch(addTask(
-        {
-          'name': inputRefName.current.value,
-          'description': inputRefDescription.current.value,
-          'dueDate': inputRefDueDate.current.value
-        }
-      ))
-    }
+    dispatch(addTask(
+      {
+        'name': inputRefName.current.value,
+        'description': inputRefDescription.current.value,
+        'dueDate': inputRefDueDate.current.value
+      }
+    ))
   }
 
   return (
@@ -56,7 +42,7 @@ function FormMain(props) {
         <Form.Control type='date' ref={inputRefDueDate}></Form.Control>
       </Form.Group>
 
-      <Button variant="primary" onClick={addItem}>Agregar {selectOption}</Button>
+      <Button variant="primary" onClick={addItem}>Agregar Tarea</Button>
     </Form>
   );
 }

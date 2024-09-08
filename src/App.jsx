@@ -9,29 +9,19 @@ import Form from './Components/Form/Form.jsx';
 import Button from './Components/Button/Button.jsx';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { initAddTask, clearTasks } from './reducers/tasksSlice.js';
-import { initAddGoal, clearGoals } from './reducers/goalsSlice.js';
+import { initAddTask } from './reducers/tasksSlice.js';
 
 function App() {
 
-  const goals = useSelector((state) => state.goals.value);
   const tasks = useSelector((state) => state.tasks.value);
-  const option = useSelector((state) => state.option.value);
   const dispatch = useDispatch();
 
   // CONSULTAR LAS TAREAS Y METAS POR DEFAULT 
-  function initFetch(typeRequest) {
+  function initFetch() {
 
-    // VARIABLE QUE ADMINISTRARA EL TIPO (TAREA, META)
-    let type;
-    
-    if (typeRequest === 'Tarea') {
-      dispatch(clearTasks());
-      type = 'Tasks';
-    } else {
-      type = 'Goals'
-      dispatch(clearGoals());
-    }
+    // VARIABLE QUE ADMINISTRARA EL TIPO 
+    let type = 'Tasks';
+
 
     // OBTENER LAS TAREAS Y METAS DE LA BD
     fetch('http://localhost:3001/get' + type, {
@@ -44,21 +34,17 @@ function App() {
       return res.json();
     }).then((response) => {
       response.map((item) => {
-        if (type == 'Tasks') {
-          dispatch(initAddTask(item));
-        } else {
-          dispatch(initAddGoal(item));
-        }
+        dispatch(initAddTask(item));
       })
     }).catch(err => {
-      console.err(err);
+      console.error(err);
     })
   }
 
   // OBTENER EL ESTADO INICIAL
   useEffect(() => {
-    initFetch(option);
-  }, [option])
+    initFetch();
+  }, [])
 
   return (
     <div className="App">
@@ -82,19 +68,12 @@ function App() {
             <Row>
               <div className='itemScroll'>
                 {
-                  option == 'Meta' ? (
-                    goals.map((item, index) => {
-                      return <Item key={index} id={item._id} name={item.name} description={item.description} dueDate={item.dueDate} option={'Meta'} />
-                    })) : (
-                    tasks.map((item, index) => {
-                      return <Item key={index} id={item._id} name={item.name} description={item.description} dueDate={item.dueDate} option={'Tarea'} />
-                    })
-                  )
+                  tasks.map((item, index) => {
+                    return <Item key={index} id={item._id} name={item.name} description={item.description} dueDate={item.dueDate} />
+                  })
                 }
-
               </div>
             </Row>
-
           </Col>
         </Row>
       </Container>

@@ -1,15 +1,23 @@
 $primary: #c2eaff;
 
-.text-center{
+.text-center {
     background-color: $primary;
     margin: 12px;
 }
 
-.header-item{
+.header-item {
     font-size: large;
     font-weight: bold;
 }
 
-.text-muted{
+.text-muted {
     font-weight: bold;
+}
+
+.btn-Edit {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    padding: 5px 20px;
+    font-size: 12px;
 }
